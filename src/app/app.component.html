@@ -1,0 +1,72 @@
+<div *ngIf="!isEditMode">
+  <h1>Create Contact</h1>
+  <input
+    type="text"
+    [(ngModel)]="user.name"
+    name="name"
+    placeholder="Enter Name"
+  />
+  <br /><br />
+  <input
+    type="text"
+    [(ngModel)]="user.address"
+    name="address"
+    placeholder="Enter Address"
+  /><br /><br />
+  <input
+    type="text"
+    [(ngModel)]="user.phone"
+    name="phone"
+    placeholder="Enter Phone"
+  />
+  <br /><br />
+  <button class="btn btn-primary" (click)="save()">Save</button>
+</div>
+
+<div *ngIf="isEditMode">
+  <h1>Update Contact</h1>
+  <input
+    type="text"
+    [(ngModel)]="selectedUser.name"
+    name="name"
+    placeholder="Enter Name"
+  />
+  <br /><br />
+  <input
+    type="text"
+    [(ngModel)]="selectedUser.address"
+    name="address"
+    placeholder="Enter Address"
+  /><br /><br />
+  <input
+    type="text"
+    [(ngModel)]="selectedUser.phone"
+    name="phone"
+    placeholder="Enter Phone"
+  />
+  <br /><br />
+  <button class="btn btn-success" (click)="update(12)">Update</button>
+  <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
+</div>
+
+<table class="table">
+  <th>
+    <tr>
+      <td>Sr. no</td>
+      <td>Name</td>
+      <td>Address</td>
+      <td>Phone</td>
+      <td>Delete</td>
+    </tr>
+    <tr *ngFor="let itm of users; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ itm.name }}</td>
+      <!-- <td>{{ itm.address }}</td> -->
+      <!-- <td>{{ itm.phone }}</td> -->
+      <td>
+        <button class="btn btn-info" (click)="onEdit(itm)">Edit</button>
+        <button class="btn btn-danger" (click)="onDelete(i)">Del</button>
+      </td>
+    </tr>
+  </th>
+</table>
